@@ -31,6 +31,13 @@ class CliTest {
     }
 
     @Test
+    void testCommandRequired() {
+        int exitCode = cmd.execute();
+        // Exit code 2 signifies incorrect arguments.
+        assertEquals(2, exitCode);
+    }
+
+    @Test
     void testUrlOptionWithoutCommand() {
         cmd.execute("--url", URL);
         assertEquals(URL, cli.getUrl());

@@ -26,7 +26,19 @@ public class ProductList {
      * @return JSON of the products as string.
      */
     public String toJson() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+        sb.append("{\"products\": [");
+        for (int i = 0; i < products.size(); i++) {
+            Product product = products.get(i);
+            sb.append(String.format("{\"id\": %d, \"name\": \"%s\", \"price\": %.2f}", product.getId(), product.getName(), product.getPrice()));
+            // A comma is not allowed after the last element in the list in JSON,
+            // it would result in a parsing error.
+            if (i != products.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]}");
+        return sb.toString();
     }
 
     /**
@@ -37,6 +49,13 @@ public class ProductList {
      * @return Markdown table of the products as string.
      */
     public String toTable() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+        // Header of the table (id and price are right aligned)
+        sb.append("|  ID  |      Name      |   Price   |\n");
+        sb.append("|-----:|----------------|----------:|\n");
+        for (Product product : products) {
+            sb.append(String.format("| %d | %s | %.2f |\n", product.getId(), product.getName(), product.getPrice()));
+        }
+        return sb.toString();
     }
 }

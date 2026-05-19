@@ -1,0 +1,21 @@
+name: Format
+
+on: [push, pull_request]
+
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout sources
+        uses: actions/checkout@v6
+      # Unlike other formatters, this does not have an option to only show the diffs,
+      # hence it is run in-place without commiting automatically and then the diffs
+      # are shown in the next step.
+      - name: Format file
+        uses: axel-op/googlejavaformat-action@v4
+        with:
+          args: "--replace"
+          skip-commit: true
+      # If there are any diffs to show, it will fail thanks to the --exit-code flag.
+      - name: Show diffs
+        run: git --no-pager diff --exit-code

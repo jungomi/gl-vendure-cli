@@ -11,7 +11,7 @@ import picocli.CommandLine.ScopeType;
         description = "Interact with the Vendure e-commerce platform from the command line.")
 public class Cli {
     // scope = INHERIT means this options will be available in all subcommands.
-    @Option(names = {"-u", "--url"}, description = "URL to the Vendure backend.", scope = ScopeType.INHERIT)
+    @Option(names = {"-u", "--url"}, description = "URL to the Vendure backend.", scope = ScopeType.INHERIT, defaultValue = "${env:URL}")
     private String url = "http://localhost:3000";
 
     public String getUrl() {

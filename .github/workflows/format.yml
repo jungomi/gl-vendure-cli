@@ -8,6 +8,12 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v6
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: "temurin"
+          java-version: "25"
+          cache: "gradle"
       # Unlike other formatters, this does not have an option to only check and show the diffs.
       # So instead, use --dry-run to list all files that would be formated, so that we at least
       # get to see which files are not formatted.

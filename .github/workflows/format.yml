@@ -8,6 +8,12 @@ jobs:
     steps:
       - name: Checkout sources
         uses: actions/checkout@v6
+      - name: Setup Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: "temurin"
+          java-version: "25"
+          cache: "gradle"
       # Unlike other formatters, this does not have an option to only show the diffs,
       # hence it is run in-place without commiting automatically and then the diffs
       # are shown in the next step.

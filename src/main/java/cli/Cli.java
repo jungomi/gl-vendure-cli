@@ -19,7 +19,7 @@ public class Cli {
       description = "URL to the Vendure backend.",
       scope = ScopeType.INHERIT,
       defaultValue = "${env:URL}")
-  private String url = "http://localhost:3000";
+  private String url = "http://localhost:3000/shop-api";
 
   public String getUrl() {
     return url;

@@ -4,14 +4,12 @@ import product.Product;
 import product.ProductList;
 
 public class TableFormat implements FormatStrategy {
-  /**
-   * Convert the product list to a markdown table.
-   *
-   * <p>Not nicely aligned in the text form, but can be rendered correctly in markdown.
-   *
-   * @param productList The list of products to be formatted as a markdown table.
-   * @return Markdown table of the products as string.
-   */
+  /// Convert the product list to a markdown table.
+  ///
+  /// Not nicely aligned in the text form, but can be rendered correctly in markdown.
+  ///
+  /// @param productList The list of products to be formatted as a markdown table.
+  /// @return Markdown table of the products as string.
   @Override
   public String formatProductList(ProductList productList) {
     StringBuilder sb = new StringBuilder();

@@ -8,10 +8,8 @@ import java.net.http.HttpResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * A GraphQL client that sends an HTTP POST request to the given endpoint and returns the result
- * based on the well-typed query class.
- */
+/// A GraphQL client that sends an HTTP POST request to the given endpoint and returns the result
+/// based on the well-typed query class.
 public class GraphQLClient {
   private String url;
   private HttpClient client;

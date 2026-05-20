@@ -4,14 +4,12 @@ import product.Product;
 import product.ProductList;
 
 public class JsonFormat implements FormatStrategy {
-  /**
-   * Convert the product list to JSON.
-   *
-   * <p>The resulting JSON is not prettified, i.e. it is all on a single line.
-   *
-   * @param productList The list of products to be formatted as a JSON.
-   * @return JSON of the products as string.
-   */
+  /// Convert the product list to JSON.
+  ///
+  /// The resulting JSON is not prettified, i.e. it is all on a single line.
+  ///
+  /// @param productList The list of products to be formatted as a JSON.
+  /// @return JSON of the products as string.
   @Override
   public String formatProductList(ProductList productList) {
     StringBuilder sb = new StringBuilder();

@@ -1,7 +1,10 @@
 package product;
 
-import java.util.ArrayList;
+import graphql.GraphQLClient;
+import graphql.GraphQLQueryProductList;
+import java.io.IOException;
 import java.util.List;
+import org.json.JSONException;
 
 public class ProductList {
   public List<Product> products;
@@ -11,12 +14,14 @@ public class ProductList {
   }
 
   public static ProductList retrieveProducts(String url) {
-    // Example products to test
-    List<Product> products = new ArrayList<>();
-    products.add(new Product(1, "Laptop 13 inch 8GB", 129900));
-    products.add(new Product(2, "Laptop 15 inch 8GB", 139900));
-    products.add(new Product(5, "Tablet 32GB", 32900));
-    products.add(new Product(6, "Tablet 128GB", 44500));
-    return new ProductList(products);
+    GraphQLClient client = new GraphQLClient(url);
+    GraphQLQueryProductList query = new GraphQLQueryProductList();
+    try {
+      return client.executeQuery(query);
+    } catch (IOException | InterruptedException | JSONException e) {
+      // TODO: Handle this exception properly.
+      throw new RuntimeException(e);
+    }
+  }
   }
 }
